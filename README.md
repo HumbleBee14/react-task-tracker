@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# REACT : JS library for building UI.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### React runs on the clients as a SPA (Single Page App)
 
-## Available Scripts
+## WHy to use REACT ?
 
-In the project directory, you can run:
+MVC {
+Model: "Model Deals with Data",
+Controller: "COntroller deals with the requests & the routing",
+View: "View is the UI- User Interface- which user sees"
+}
 
-### `yarn start`
+### MVC.View = " **REACT** ";
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Structure the 'view' layer of your application
+- Reusable components wih their own state
+- JSX - Dynamic markup - JavaScript XML- JSX allows us to write HTML in React.
+- Interactive UIs with Virtual DOM
+- Performance & testing
+- One way data binding
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Components - Function & Classes
 
-### `yarn test`
+> Function based Component:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+      export const Header = () => {
+        return (
+          <div>
+            <h1> My Header </h1>
+          </div>
+        )
+      }
 
-### `yarn build`
+> Class based Component:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+      export default class Header extends React.Component {
+        render()
+        {
+          retunr  (
+            <div>
+            <h1> My Header </h1>
+            </div>
+          )
+        }
+      }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Components render / return JSX (Javascript Syntax Extension)
+- Componenets can also take in "props"
+  Example: <Header **title = "My Props"** />
+- Components are not static markup, instead they are DYNAMIC and they contain **"state"**.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Working with State
 
-### `yarn eject`
+### Components can have **"state"** which is an object that determines how a compnent renders and behaves.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **"App"** oe **"global"** state refers to state that is available to the entire UI, not just a single component.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- > NOTE: Prior to React 16.8, we had to use Class based components to use state. But Now we can use **FUNCTIONAL COMPONENTs** with **Hooks**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+// Earlier, Functional Components were called- Dumb components (Stateless components) - A functional(a.k.a. stateless) component is **(was)** just a plain javascript function which takes props as an argument and returns a react element.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-  Class based Components are Stateful components. It has a state, lifecycle hooks and it is a javascript class which means that React creates instances of it. React should initialise the component class in order to call lifecycle hooks, call a constructor, initialise state and more.
 
-## Learn More
+// Earlier > Stateless functional components are useful for dumb/presentational components. Presentational components focus on the UI rather than behavior, so it’s important to avoid using state in presentational components. Instead, state should be managed by higher-level “container” components, or via Flux/Redux/etc. Stateless functional components don’t support state or lifecycle methods.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> This (Above) was before React 16.8, but now we support state and other things in Functional Components also. They are not Dumb anymore B-)
 
-### Code Splitting
+## React Hooks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**React Hooks** are functions that let us **hook** into the **React** state and lifecycle features from function components.
+OR in other words------
 
-### Analyzing the Bundle Size
+- ### Hooks - They let you use state and other React features without writing a class.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- useState - returns a stateful value and a function to update it
+- [useEffect](https://reactjs.org/docs/hooks-effect.html) - perform side effects in function components
+- useContext, useReducer, useRed ... many more (You can create your own custom hooks also :)
 
-### Making a Progressive Web App
+```
+import React, { useState } from 'react';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
 
-### Advanced Configuration
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Here, **useState** is a Hook (we’ll talk about what this means in a moment). We call it inside a function component to add some **local state** to it. React will preserve this state between re-renders. **useState returns a pair: the current state value and a function that lets you update it.** You can call this function from an event handler or somewhere else. It’s similar to this.setState in a class, except it doesn’t merge the old and new state together.
+The only argument to useState is the initial state. The initial state argument is only used during the first render.
 
-### Deployment
+For more : https://reactjs.org/docs/hooks-intro.html
+// > -------------------------------------------------------
+Let's begin
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1.  npx create-react-app <your-app-name> // This will setup everything required to start/create a project with essential core dependencies
+2.  cd <your-app-name>
+    yarn start or npm start ( to start dev server on local machine)
 
-### `yarn build` fails to minify
+3.  Install JSON-Server (to host backend server to connect to )
+    in 'package.json'-debug-
+    "server": "json-server --watch db.json --port 5000"
+    > npm run server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+// ----------------------------------------------------
+
+# React Notes:
+
+## JSX : JSX element should/Must have only OjNE PARENT Element !! (You can put any number of child elements inside the single Parent element) inside the return value of the class/functional component. [ If you don't want to use any element, then use empty brackets <> </> to enclose child elements in it]
+
+# Props (to Pass stuff in the Components)
+
+# React - States (useState) - Hooks
